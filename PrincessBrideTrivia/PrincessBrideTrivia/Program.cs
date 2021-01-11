@@ -73,6 +73,8 @@ namespace PrincessBrideTrivia
             Question[] questions = new Question[lines.Length / 5];
             for (int i = 0; i < questions.Length; i++)
             {
+                System.Random r = new System.Random();
+                int randomInt = r.Next(0, 7);
                 int lineIndex = i * 5;
                 string questionText = lines[lineIndex];
 
@@ -89,7 +91,23 @@ namespace PrincessBrideTrivia
                 question.Answers[1] = answer2;
                 question.Answers[2] = answer3;
                 question.CorrectAnswerIndex = correctAnswerIndex;
-                questions[i] = question;
+
+                if (questions[randomInt] == null)
+                {
+                    questions[randomInt] = question;
+                }
+                else
+                {
+                    while (questions[randomInt] != null && randomInt < questions.Length)
+                        randomInt = r.Next(0, 7);
+                    if (questions[randomInt] == null && randomInt < questions.Length) { 
+                        questions[randomInt] = question;
+                        break;
+                    }
+
+                }
+
+                // questions[i] = question;
             }
             return questions;
         }

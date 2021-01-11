@@ -102,7 +102,6 @@ namespace PrincessBrideTrivia
                         randomInt = r.Next(0, 7);
                     if (questions[randomInt] == null && randomInt < questions.Length) { 
                         questions[randomInt] = question;
-                        break;
                     }
 
                 }

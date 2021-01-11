@@ -36,6 +36,15 @@ namespace PrincessBrideTrivia.Tests
             Assert.IsNotNull(questions[i]);
         }
 
+        [TestMethod]
+        public void LoadQuestions_CheckIfQuestionListIsRandomized()
+        {
+            Question[] listOne = Program.LoadQuestions("Trivia.txt");
+            Question[] listTwo = Program.LoadQuestions("Trivia.txt");
+
+            Assert.AreNotEqual(listOne, listTwo);
+        }
+
         [DataTestMethod]
         [DataRow("1", true)]
         [DataRow("2", false)]

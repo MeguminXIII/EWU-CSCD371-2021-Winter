@@ -27,6 +27,15 @@ namespace PrincessBrideTrivia.Tests
             }
         }
 
+        [TestMethod]
+        public void LoadQuestions_ReturnsFalseIfOutputIsNull()
+        {
+            Question[] questions = Program.LoadQuestions("Trivia.txt");
+
+            for(int i = 0; i < questions.Length; i++)
+            Assert.IsNotNull(questions[i]);
+        }
+
         [DataTestMethod]
         [DataRow("1", true)]
         [DataRow("2", false)]

@@ -43,10 +43,12 @@ namespace PrincessBrideTrivia.Tests
 
             Question[] listOne = Program.LoadQuestions("Trivia.txt");
             Question[] listTwo = Program.LoadQuestions("Trivia.txt");
+            Question[] listThree = Program.LoadQuestions("Trivia.txt");
+            Question[] listFour = Program.LoadQuestions("Trivia.txt");
 
-            for(i=0; i < listOne.Length; i++)
+            for (i=0; i < listOne.Length; i++)
             {
-                if (listOne[i].Text == listTwo[i].Text)
+                if (listOne[i].Text == listTwo[i].Text && listThree[i].Text == listFour[i].Text && listOne[i].Text == listThree[i].Text)
                     numberOfElementsInSameOrder++;
             }
 

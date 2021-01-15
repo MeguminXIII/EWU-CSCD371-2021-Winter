@@ -5,7 +5,7 @@ namespace PrincessBrideTrivia
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             string filePath = GetFilePath();
             Question[] questions = LoadQuestions(filePath);
@@ -84,9 +84,11 @@ namespace PrincessBrideTrivia
 
                 string correctAnswerIndex = lines[lineIndex + 4];
 
-                Question question = new Question();
-                question.Text = questionText;
-                question.Answers = new string[3];
+                Question question = new Question
+                {
+                    Text = questionText,
+                    Answers = new string[3]
+                };
                 question.Answers[0] = answer1;
                 question.Answers[1] = answer2;
                 question.Answers[2] = answer3;
@@ -106,7 +108,6 @@ namespace PrincessBrideTrivia
 
                 }
 
-                // questions[i] = question;
             }
             return questions;
         }

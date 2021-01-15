@@ -39,10 +39,19 @@ namespace PrincessBrideTrivia.Tests
         [TestMethod]
         public void LoadQuestions_CheckIfQuestionListIsRandomized()
         {
+            int i, numberOfElementsInSameOrder = 0;
+
             Question[] listOne = Program.LoadQuestions("Trivia.txt");
             Question[] listTwo = Program.LoadQuestions("Trivia.txt");
 
-            Assert.AreNotEqual(listOne, listTwo);
+            for(i=0; i < listOne.Length; i++)
+            {
+                if (listOne[i].Text == listTwo[i].Text)
+                    numberOfElementsInSameOrder++;
+            }
+
+            if (numberOfElementsInSameOrder == listOne.Length)
+                Assert.Fail();
         }
 
         [DataTestMethod]
@@ -51,8 +60,10 @@ namespace PrincessBrideTrivia.Tests
         public void DisplayResult_ReturnsTrueIfCorrect(string userGuess, bool expectedResult)
         {
             // Arrange
-            Question question = new Question();
-            question.CorrectAnswerIndex = "1";
+            Question question = new Question
+            {
+                CorrectAnswerIndex = "1"
+            };
 
             // Act
             bool displayResult = Program.DisplayResult(userGuess, question);

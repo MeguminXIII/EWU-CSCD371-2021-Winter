@@ -37,7 +37,7 @@ namespace Logger
                 return logger;
         }
 
-        private string? ConfigureFileLogger()
+        static private string? ConfigureFileLogger()
         {
             Console.WriteLine("Please input a filepath");
             return Console.ReadLine();

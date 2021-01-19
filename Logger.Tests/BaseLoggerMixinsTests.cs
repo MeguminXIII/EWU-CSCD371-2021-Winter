@@ -40,6 +40,12 @@ namespace Logger.Tests
 
     public class TestLogger : BaseLogger
     {
+        public override string ClassName { get; set; }
+
+        public TestLogger()
+        {
+            this.ClassName = "testLogger";
+        }
         public List<(LogLevel LogLevel, string Message)> LoggedMessages { get; } = new List<(LogLevel, string)>();
 
         public override void Log(LogLevel logLevel, string message)

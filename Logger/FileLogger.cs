@@ -20,18 +20,16 @@ namespace Logger
 
         public override void Log(LogLevel logLevel, string message)
         {
-            StreamWriter messageAppend;
             if (FilePath == null)
                 throw new ArgumentNullException(FilePath);
-            messageAppend = new StreamWriter(FilePath);
-
+            StreamWriter messageAppend = File.AppendText(FilePath);
+            
             string dateAndTime = DateTime.Now.ToString("yyyy-mm-dd-h:m:s");
 
-            messageAppend.WriteLine("Date and Time: "
-                + dateAndTime + "\r\n"
-                + ClassName + "\r\n"
-                + logLevel + "\r\n" 
-                + message);
+            messageAppend.WriteLine("Date and Time: " + dateAndTime);
+            messageAppend.WriteLine(ClassName);
+            messageAppend.WriteLine(logLevel);
+            messageAppend.WriteLine(message);
         }
     }
 }

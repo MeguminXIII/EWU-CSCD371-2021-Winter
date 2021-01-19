@@ -8,10 +8,13 @@ namespace Logger
 {
     class Program
     {
+
         static public void Main()
         {
             LogFactory logFactory= new LogFactory();
-            logFactory.CreateLogger("FileLogger");
+            BaseLogger logger = logFactory.CreateLogger("FileLogger");
+            logger.Log((LogLevel)3 , "This is a message" );
+
 
         }
     }

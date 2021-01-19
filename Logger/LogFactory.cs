@@ -29,10 +29,16 @@ namespace Logger
                     filePath = Console.ReadLine();
                 }
 
-                logger = new FileLogger(filePath);
+                while (!File.Exists(filePath))
+                {
+                    Console.WriteLine("No file found please try again");
+                    filePath = ConfigureFileLogger();
+                }
 
+                logger = new FileLogger(filePath!);
             }
-                if (logger == null)
+
+            if (logger == null)
                     throw new NullReferenceException("BaseLogger is null, try again");
                 return logger;
         }
@@ -40,7 +46,7 @@ namespace Logger
         static private string? ConfigureFileLogger()
         {
             Console.WriteLine("Please input a filepath");
-            return Console.ReadLine();
+            return @Console.ReadLine();
         }
     }
 }

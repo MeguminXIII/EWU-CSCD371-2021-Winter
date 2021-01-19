@@ -22,7 +22,7 @@ namespace Logger
         {
             if (FilePath == null)
                 throw new ArgumentNullException(FilePath);
-            StreamWriter messageAppend = File.AppendText(FilePath);
+            TextWriter messageAppend = new StreamWriter(FilePath, true);
             
             string dateAndTime = DateTime.Now.ToString("yyyy-mm-dd-h:m:s");
 
@@ -30,6 +30,7 @@ namespace Logger
             messageAppend.WriteLine(ClassName);
             messageAppend.WriteLine(logLevel);
             messageAppend.WriteLine(message);
+            messageAppend.Close();
         }
     }
 }

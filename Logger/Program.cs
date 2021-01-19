@@ -13,7 +13,7 @@ namespace Logger
         {
             LogFactory logFactory= new LogFactory();
             BaseLogger logger = logFactory.CreateLogger("FileLogger");
-            logger.Log((LogLevel)3 , "This is a message" );
+            logger.Log((LogLevel)2 , "This is a message" );
 
 
         }

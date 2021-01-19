@@ -1,0 +1,8 @@
+Date and Time: 2021-26-18-8:26:19
+FileLogger
+Debug
+This is a message
+Date and Time: 2021-27-18-8:27:13
+FileLogger
+Information
+This is a message

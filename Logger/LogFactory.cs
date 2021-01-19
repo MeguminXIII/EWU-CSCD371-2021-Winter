@@ -17,6 +17,9 @@ namespace Logger
 
         public BaseLogger CreateLogger(string className)
         {
+            if (className == null)
+                throw new ArgumentNullException();
+
             BaseLogger? logger = null;
             if (className == nameof(FileLogger))
             {

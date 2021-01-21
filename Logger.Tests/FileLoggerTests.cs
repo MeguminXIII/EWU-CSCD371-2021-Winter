@@ -16,7 +16,7 @@ namespace Logger.Tests
             FileLogger logger = new FileLogger("TestFile.txt");
 
             //Assert
-            Assert.AreEqual("TestFile.txt", logger.FilePath);
+            Assert.AreEqual("TestFile.txt", logger.GetFilePath());
         }
 
         [TestMethod]

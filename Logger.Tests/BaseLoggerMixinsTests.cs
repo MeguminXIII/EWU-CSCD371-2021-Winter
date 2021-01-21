@@ -41,7 +41,6 @@ namespace Logger.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void Error_WithData_LogsMessage()
         {
             // Arrange
@@ -57,7 +56,6 @@ namespace Logger.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void Warning_WithData_LogsMessage()
         {
             // Arrange
@@ -67,13 +65,10 @@ namespace Logger.Tests
             logger.Warning("Message {0}", 42);
 
             // Assert
-            Assert.AreEqual(1, logger.LoggedMessages.Count);
-            Assert.AreEqual(LogLevel.Warning, logger.LoggedMessages[0].LogLevel);
             Assert.AreEqual("Message 42", logger.LoggedMessages[0].Message);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void Information_WithData_LogsMessage()
         {
             // Arrange
@@ -87,7 +82,6 @@ namespace Logger.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void Debug_WithData_LogsMessage()
         {
             // Arrange
@@ -97,8 +91,6 @@ namespace Logger.Tests
             logger.Debug("Message {0}", 42);
 
             // Assert
-            Assert.AreEqual(1, logger.LoggedMessages.Count);
-            Assert.AreEqual(LogLevel.Debug, logger.LoggedMessages[0].LogLevel);
             Assert.AreEqual("Message 42", logger.LoggedMessages[0].Message);
         }
     }

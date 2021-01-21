@@ -9,13 +9,17 @@ namespace Logger
 {
     public class FileLogger : BaseLogger
     {
-        public override string ClassName { get; set; }
-        public string? FilePath { get; set; }
+        private string? FilePath { get; set; }
+        public override string ClassName { get; set; } = "FileLogger";
 
         public FileLogger(string filePath)
         {
             this.FilePath = filePath;
-            this.ClassName = "FileLogger";
+        }
+
+        public string GetFilePath()
+        {
+            return this.FilePath!;
         }
 
         public override void Log(LogLevel logLevel, string message)

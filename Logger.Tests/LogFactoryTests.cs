@@ -14,7 +14,7 @@ namespace Logger.Tests
             LogFactory logFactory = new LogFactory();
             FileLogger logger = (FileLogger)logFactory.CreateLogger("FileLogger");
 
-            Assert.AreEqual(logger.FilePath, "testFile.txt");
+            Assert.AreEqual(logger.GetFilePath(), "testFile.txt");
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace Logger.Tests
         public void Test_PassingNullToCreateLogger_ShouldThrowException()
         {
             LogFactory logFactory = new LogFactory();
-            BaseLogger logger = logFactory.CreateLogger(null!);
+            _ = logFactory.CreateLogger(null!);
         }
     }
 }

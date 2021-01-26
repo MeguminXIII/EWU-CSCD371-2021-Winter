@@ -11,16 +11,15 @@ namespace CanHazFunny
         private IJokeOutput jokeOutput;
         private IJokeService jokeService;
 
-        public IJokeOutput JokeOutput
-        {
-            get => jokeOutput;
-            set => jokeOutput = value ?? throw new ArgumentNullException(jokeOutput + "is null");
+        public IJokeOutput JokeOutput { 
+            get => jokeOutput; 
+            private set => jokeOutput = value ?? throw new ArgumentNullException(jokeOutput + "is null");
         }
 
         public IJokeService JokeService
         {
             get => jokeService;
-            set => jokeService = value ?? throw new ArgumentNullException(jokeService + "is null");
+            private set => jokeService = value ?? throw new ArgumentNullException(jokeService + "is null");
         }
 
         public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
@@ -41,7 +40,8 @@ namespace CanHazFunny
             string joke = this.JokeService.GetJoke();
             while(joke.Contains("Chuck") 
                 || joke.Contains("Norris") 
-                || joke.Contains("Chuck Norris"))
+                || joke.Contains("chuck")
+                || joke.Contains("norris"))
             {
                 joke = this.JokeService.GetJoke();
             }

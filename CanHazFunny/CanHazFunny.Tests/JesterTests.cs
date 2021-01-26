@@ -9,14 +9,14 @@ namespace CanHazFunny.Tests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Jester_AssignNullJokeService_ThrowsNullError()
+        public void Jester_AssignNullJesterJokeService_ThrowsNullError()
         {
             Jester jester = new Jester(new JokeOutput(), null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Jester_AssignNullJokeOutput_ThrowsNullError()
+        public void Jester_AssignNullJesterJokeOutput_ThrowsNullError()
         {
             Jester jester = new Jester(null, new JokeService());
         }
@@ -24,7 +24,7 @@ namespace CanHazFunny.Tests
         [TestMethod]
         public void Jester_ValidJesterService()
         {
-            IJokeService jokeService = new JokeService();
+            JokeService jokeService = new JokeService();
 
             Jester jester = new Jester(new JokeOutput(), jokeService);
 
@@ -34,7 +34,7 @@ namespace CanHazFunny.Tests
         [TestMethod]
         public void Jester_ValidJesterOutput()
         {
-            IJokeOutput jokeOutput = new JokeOutput();
+            JokeOutput jokeOutput = new JokeOutput();
 
             Jester jester = new Jester(jokeOutput, new JokeService());
 
@@ -71,12 +71,14 @@ namespace CanHazFunny.Tests
         }
 
         [TestMethod]
-        public void Jester_CheckNotNull()
+        public void JokeService_GetJokeAssertNotNull()
         {
-            Jester jester = new Jester(new JokeOutput(), new JokeService());
+            IJokeService jokeService = new JokeService();
 
-            Assert.IsNotNull(jester.JokeService);
-            Assert.IsNotNull(jester.JokeOutput);
+            string result = jokeService.GetJoke();
+
+            Assert.IsNotNull(result);
         }
+
     }
 }

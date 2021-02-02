@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net5.0</TargetFramework>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+	  <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <LangVersion>9.0</LangVersion>
+	  <Nullable>enable</Nullable>
+	  <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+</Project>

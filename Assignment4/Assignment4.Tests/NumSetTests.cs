@@ -47,6 +47,17 @@ namespace Assignment4.Tests
         }
 
         [TestMethod]
+        public void EqualsOperator_TestingIfStatements()
+        {
+            NumSet? one = null;
+            NumSet? two = null;
+            NumSet three = new(1, 2);
+
+            Assert.IsTrue(one! == two!);
+            Assert.IsFalse(one! == three!);
+        }
+
+        [TestMethod]
         public void GetHashCode_ReturnsAnInt()
         {
             NumSet one = new(1, 2, 3, 5, 6);

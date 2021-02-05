@@ -5,39 +5,42 @@ using System.Text;
 
 namespace Assignment4
 {
-    public class SetWriter : IDisposable
+    namespace SetWriterNamespace
     {
-        private bool _DisposedValue = false;
-        private StreamWriter streamWriter;
-
-        public SetWriter(string filePath)
+        public class SetWriter : IDisposable
         {
-            streamWriter = new(filePath);
-        }
+            private bool _DisposedValue = false;
+            private StreamWriter streamWriter;
 
-        public void WriteSetToFile(NumSet numSet)
-        {
-            if (numSet is null) throw new ArgumentNullException(numSet + " is null in WriteSetToFile");
-
-            this.streamWriter.WriteLine(numSet.ToString());
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (!_DisposedValue)
+            public SetWriter(string filePath)
             {
-                if (disposing)
-                {
-                    streamWriter.Dispose();
-                }
+                streamWriter = new(filePath);
+            }
 
-                _DisposedValue = true;
+            public void WriteSetToFile(NumSet numSet)
+            {
+                if (numSet is null) throw new ArgumentNullException(numSet + " is null in WriteSetToFile");
+
+                this.streamWriter.WriteLine(numSet.ToString());
+            }
+
+            public void Dispose()
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
+
+            private void Dispose(bool disposing)
+            {
+                if (!_DisposedValue)
+                {
+                    if (disposing)
+                    {
+                        streamWriter.Dispose();
+                    }
+
+                    _DisposedValue = true;
+                }
             }
         }
     }

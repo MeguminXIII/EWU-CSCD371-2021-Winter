@@ -19,7 +19,7 @@ namespace Assignment4
 
             public void WriteSetToFile(NumSet numSet)
             {
-                if (numSet is null) throw new ArgumentNullException(numSet + " is null in WriteSetToFile");
+                if (numSet is null) throw new ArgumentNullException(nameof(numSet));
 
                 this.streamWriter.WriteLine(numSet.ToString());
             }

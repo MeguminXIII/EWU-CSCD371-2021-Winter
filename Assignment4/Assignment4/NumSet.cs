@@ -7,13 +7,13 @@ namespace Assignment4
     {
         private HashSet<int>? _Set;
 
-        public HashSet<int>? Set { get => _Set; set => _Set = value ?? throw new ArgumentNullException("HashSet's set " + value + " in NumSet is Null"); }
+        public HashSet<int>? Set { get => _Set; set => _Set = value ?? throw new ArgumentNullException(nameof(value)); }
 
         public NumSet(params int[] array)
         {
             if(array is null)
             {
-                throw new ArgumentNullException(array + " is null inside NumSet constructor");
+                throw new ArgumentNullException(nameof(array));
             }
             this.Set = new HashSet<int>(array);
         }
@@ -21,7 +21,7 @@ namespace Assignment4
         public int[] ReturnArray()
         {
             if (Set is null)
-                throw new ArgumentNullException(Set + " is null in ReturnArray");
+                throw new ArgumentNullException(nameof(Set));
             int[] copySet = new int[Set.Count];
             Set.CopyTo(copySet);
             return copySet;

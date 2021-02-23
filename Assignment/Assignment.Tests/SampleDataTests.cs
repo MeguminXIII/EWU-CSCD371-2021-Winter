@@ -43,6 +43,48 @@ namespace Assignment.Tests
                 sampleData.GetAggregateSortedListOfStatesUsingCsvRows());
         }
 
-       
+        [TestMethod]
+        public void People_EqualToExpected()
+        {
+            SampleData sampleData = new();
+            
+            IEnumerable<IPerson> actual = sampleData.People;
+
+            IEnumerable<IPerson> expected = sampleData.CsvRows.OrderBy(Address => Address).Select(line => line.Split(",")).OrderBy(line => line[6]).ThenBy(line => line[5]).ThenBy(line => line[7])
+            .Select(person => new Person(person[1], person[2], new Address(person[4], person[5], person[6], person[7]), person[3]));
+
+            IEnumerable<(IPerson, IPerson)> actualZippedWithExpectedOutput = actual.Zip(expected);
+
+            Assert.IsTrue(actualZippedWithExpectedOutput
+                .All(item => (item.Item1.FirstName == item.Item2.FirstName)));
+            Assert.IsTrue(actualZippedWithExpectedOutput
+                   .All(item => (item.Item1.LastName == item.Item2.LastName)));
+            Assert.IsTrue(actualZippedWithExpectedOutput
+               .All(item => (item.Item1.FirstName == item.Item2.FirstName)));
+
+        }
+
+        [TestMethod]
+        public void FilterByEmailAddress_GivenAContainsGov_ReturnsTrue()
+        {
+            SampleData sampleData = new();
+
+            IEnumerable<(string, string)> actual = sampleData.FilterByEmailAddress(item => item.Contains("gov"));
+
+            Assert.IsTrue(actual.Any(item => item.Item1 == "Priscilla"));
+            Assert.IsTrue(actual.Any(item => item.Item2 == "Jenyns"));
+            Assert.IsFalse(actual.Any(item => item.Item2 == "Joder"));
+        }
+
+        [TestMethod]
+        public void GetAggregateListOfStatesGivenPeopleCollection_ActualEqualsExpected()
+        {
+            SampleData sampleData = new();
+
+            string expected = sampleData.GetAggregateSortedListOfStatesUsingCsvRows();
+            string actual = sampleData.GetAggregateListOfStatesGivenPeopleCollection(sampleData.People);
+
+            Assert.AreEqual<string>(expected, actual);
+        }
     }
 }

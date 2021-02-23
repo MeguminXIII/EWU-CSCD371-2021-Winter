@@ -19,7 +19,7 @@ namespace Assignment
             => string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows().Select(state => state).ToArray());
 
         // 4.
-        public IEnumerable<IPerson> People => CsvRows.OrderBy(Address => Address).Select(line => line.Split(",")).OrderBy(State => State).ThenBy(City => City).ThenBy(Zip => Zip)
+        public IEnumerable<IPerson> People => CsvRows.OrderBy(Address => Address).Select(line => line.Split(",")).OrderBy(line => line[6]).ThenBy(line => line[5]).ThenBy(line => line[7])
             .Select(person => new Person(person[1], person[2], new Address(person[4], person[5], person[6], person[7]), person[3]));
 
         // 5.

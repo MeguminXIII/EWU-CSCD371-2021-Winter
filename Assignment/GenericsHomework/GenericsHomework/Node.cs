@@ -6,23 +6,24 @@ namespace GenericsHomework
 {
     public class Node<T> : IEnumerable<T>
     {
-        private T? _Data;
         private Node<T>? _Next;
+        private T? _Data;
 
         public T Data { get => _Data!; private set => _Data = value ?? throw new ArgumentNullException(nameof(value)); }
         
         public Node<T> Next
         {
-            get => _Next!; set
+            get { return Next!; }
+            private set
             {
-                value._Next = this;
+                value._Next = this._Next;
                 _Next = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
         public Node(T tvalue)
         {
-            Data = tvalue;
             Next = this;
+            Data = tvalue;
         }
 
         public override string ToString()
@@ -32,10 +33,11 @@ namespace GenericsHomework
             return Data.ToString()! ?? "Null";
         }
 
-        public void Insert(T value)
+        public Node<T> Insert(T value)
         {
             Node<T> newNode = new(value);
             this.Next = newNode;
+            return newNode;
         }
 
         public void Clear()

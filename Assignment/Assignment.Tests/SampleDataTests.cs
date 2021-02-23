@@ -34,7 +34,7 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
-        public void GetUniquSortedListOfStatesGivenCsvRows_IsSortedAlphabetically()
+        public void GetUniquSortedListOfStatesGivenCsvRows_UsingHardCodedValues_IsSortedAlphabetically()
         {
             SampleData sampleData = new();
 
@@ -65,7 +65,7 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
-        public void FilterByEmailAddress_GivenAContainsGov_ReturnsTrue()
+        public void FilterByEmailAddress_GivenAContains_ReturnsCorrectly()
         {
             SampleData sampleData = new();
 

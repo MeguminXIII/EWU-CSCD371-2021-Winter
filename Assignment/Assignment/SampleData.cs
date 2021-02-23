@@ -8,11 +8,11 @@ namespace Assignment
     public class SampleData : ISampleData
     {
         // 1.
-        public IEnumerable<string> CsvRows => File.ReadAllLines(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.Parent!.FullName, "Assignment", "People.csv")).Skip(1);
+        public IEnumerable<string> CsvRows => File.ReadAllLines(Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.Parent!.Parent!.Parent!.FullName, "Assignment", "People.csv")).Skip(1);
 
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
-            => CsvRows.OrderBy(state => state).Distinct().Select(line=>line.Split(",")[6]);
+            => CsvRows.Select(line=>line.Split(",")[6]).OrderBy(state => state).Distinct();
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()

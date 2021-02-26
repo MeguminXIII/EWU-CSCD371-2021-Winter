@@ -17,6 +17,18 @@ namespace GenericsHomework.Tests
             return nodeOne;
         }
 
+        [TestMethod]
+        public void GetEnumerator_GivenNodes_ReturnsEnumerator()
+        {
+            Node<char> charNode = CreateANodeList('a', 'b', 'c');
+            IEnumerator<char> enumerator = charNode.GetEnumerator();
+            foreach(char chara in charNode)
+            {
+                enumerator.MoveNext();
+                Assert.AreEqual<char>(chara, enumerator.Current);
+            }
+
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]

@@ -26,7 +26,7 @@ namespace Assignment
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
-            => string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows().Select(state => state).ToArray());
+            => string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows().Select(item => item.Split(",")[StateColumn]).ToArray());
 
         // 4.
         public IEnumerable<IPerson> People 

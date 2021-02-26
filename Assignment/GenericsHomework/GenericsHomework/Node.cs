@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GenericsHomework
 {
     public class Node<T> : IEnumerable<T>
     {
-        private Node<T>? _Next;
+        private Node<T> _Next;
         private T? _Data;
 
         public T Data { get => _Data!; private set => _Data = value ?? throw new ArgumentNullException(nameof(value)); }
         
         public Node<T> Next
         {
-            get { return Next!; }
+            get { return _Next; }
             private set
             {
                 value._Next = this._Next;
@@ -22,7 +23,7 @@ namespace GenericsHomework
         }
         public Node(T tvalue)
         {
-            Next = this;
+            _Next = this;
             Data = tvalue;
         }
 
@@ -64,10 +65,8 @@ namespace GenericsHomework
             Node<T> currentNode = this;
 
             yield return currentNode.Data;
-            foreach(T item in this)
-            {
-                yield return currentNode.Data;
-            }
+            while (currentNode != this)
+               currentNode = currentNode.Next;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -79,11 +78,10 @@ namespace GenericsHomework
         {
             if (maximum > this.Size() || maximum < 0)
                 throw new ArgumentOutOfRangeException(nameof(maximum));
-
             Node<T> currentNode = this;
-            int i;
-            for (i = 0; i < maximum; i++, currentNode = currentNode.Next)
+            for (int i = 0; i < maximum; currentNode = currentNode.Next, i++)
                 yield return currentNode.Data;
+                
         }
     }
 }

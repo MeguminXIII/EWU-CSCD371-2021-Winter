@@ -28,12 +28,13 @@ namespace Assignment.Tests
         }
 
         [TestMethod]
-        public void GetUniquSortedListOfStatesGivenCsvRows_UsingHardCodedValues_IsSortedAlphabetically()
+        public void GetUniqueSortedListOfStatesGivenCsvRows_UsingHardCodedValues_IsSortedAlphabetically()
         {
             Assert.AreEqual<string>(
                 "AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV", 
                 SampleData.GetAggregateSortedListOfStatesUsingCsvRows());
         }
+
 
         [TestMethod]
         public void People_EqualToExpected()

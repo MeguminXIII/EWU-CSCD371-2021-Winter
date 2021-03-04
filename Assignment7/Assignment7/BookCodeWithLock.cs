@@ -16,7 +16,7 @@ namespace AddisonWesley.Michaelis.EssentialCSharp.Chapter22.Listing22_01
         static int _Count = 0;
         static object _lockObj = new();
 
-        public static int Main(string[] args)
+        public static int BookCodeLocked(string[] args)
         {
             if (args?.Length > 0) { int.TryParse(args[0], out _Total); }
 

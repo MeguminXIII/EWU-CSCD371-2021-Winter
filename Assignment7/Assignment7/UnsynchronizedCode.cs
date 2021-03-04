@@ -4,12 +4,12 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class Program
+    public class UnsynchronizedCode
     {
         static int _Total = int.MaxValue;
         static int _Count = 0;
 
-        public static int Main(string[] args)
+        public static int UnSynchedBookCode(string[] args)
         {
             if (args?.Length > 0) { int.TryParse(args[0], out _Total); }
 

@@ -14,7 +14,7 @@ namespace Assignment7
         [TestMethod]
         public void UnsynchronizedCodeTests_NotConsistent()
         {
-            string[] strings = new string[1000000000];
+            string[] strings = new string[2000000000];
 
             Assert.AreEqual<int>(0, UnsynchronizedCode.UnSynchedBookCode(strings));
         }
@@ -22,7 +22,7 @@ namespace Assignment7
         [TestMethod]
         public void BookCodeWithInterLock_ShouldBeSynched()
         {
-            string[] strings = new string[1000000000];
+            string[] strings = new string[2000000000];
 
             Assert.AreEqual<int>(0, BookCodeWithInterLock.BookCodeInterLocked(strings));
         }
@@ -30,9 +30,17 @@ namespace Assignment7
         [TestMethod]
         public void BookCodeWithLock_ShouldBeSynched()
         {
-            string[] strings = new string[1000000000];
+            string[] strings = new string[2000000000];
 
             Assert.AreEqual<int>(0, BookCodeWithLock.BookCodeLocked(strings));
+        }
+
+        [TestMethod]
+        public void BookCodeWithThreadLocal_ShouldBeSynched()
+        {
+            string[] strings = new string[2000000000];
+
+            Assert.AreEqual<int>(0, BookCodeWithThreadLocal.BookCodeThreadLocal(strings));
         }
     }
 }

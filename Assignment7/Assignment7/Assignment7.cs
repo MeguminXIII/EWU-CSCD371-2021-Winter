@@ -15,12 +15,12 @@ namespace Assignment7
 
             return await Task.Run(async () =>
             {
-                int i = 0;
+                int res = 0;
                 foreach(string url in urls)
                 {
-                    i += await Task.Run(() => webClient.DownloadString(url).Length);
+                    res += await Task.Run(() => webClient.DownloadString(url).Length);
                 }
-                return i;
+                return res;
             });
         }
 
@@ -30,14 +30,14 @@ namespace Assignment7
             if (repititions < 0) throw new AggregateException(nameof(repititions));
             if (progressPercent is null) throw new AggregateException(nameof(progressPercent));
             int counter = 0;
-            int i = 0;
-            for(int j = 0; j<repititions && !cancellationToken.IsCancellationRequested; j++)
+            int res = 0;
+            for(int i = 0; i<repititions && !cancellationToken.IsCancellationRequested; i++)
             {
-                i += await DownloadTextAsync(urls);
+                res += await DownloadTextAsync(urls);
                 if (progressPercent is not null)
                     progressPercent.Report(counter++/repititions);
             }
-            return i;
+            return res;
             
         }
     }

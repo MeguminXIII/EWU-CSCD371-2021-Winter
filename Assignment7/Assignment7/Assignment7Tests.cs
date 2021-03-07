@@ -35,11 +35,9 @@ namespace Assignment7
         [TestMethod]
         public void DownloadTextRepeatedlyAsync_GoogleParam_LargeNumOfUrls()
         {
-            CancellationTokenSource source = new();
-            CancellationToken token = source.Token;
             int rep = 10;
             int res = 0;
-            res = Assignment7.DownloadTextRepeatedlyAsync(rep, token, new Progress<double>(bar => Console.WriteLine(bar)), "https://google.com").Result;
+            res = Assignment7.DownloadTextRepeatedlyAsync(rep, new ParallelOptions(), new Progress<double>(bar => Console.WriteLine(bar)), "https://google.com").Result;
             Assert.IsTrue(res > 1000);
         }
 
@@ -47,32 +45,42 @@ namespace Assignment7
         [ExpectedException(typeof(AggregateException))]
         public void DownloadTextRepeatedlyAsync_NegRepititions_ExceptionExpected()
         {
-            CancellationTokenSource source = new();
-            CancellationToken token = source.Token;
-            Assert.AreEqual<int>(0, Assignment7.DownloadTextRepeatedlyAsync(-100, token, new Progress<double>(bar => Console.WriteLine(bar)), "https://google.com").Result);
+            Assert.AreEqual<int>(0, Assignment7.DownloadTextRepeatedlyAsync(-100, new ParallelOptions(), new Progress<double>(bar => Console.WriteLine(bar)), "https://google.com").Result);
         }
 
         [TestMethod]
         [ExpectedException(typeof(AggregateException))]
         public void DownloadTextRepeatedlyAsync_NullProgress_ExceptionExpected()
         {
-            CancellationTokenSource source = new();
-            CancellationToken token = source.Token;
-            Assert.AreEqual<int>(0, Assignment7.DownloadTextRepeatedlyAsync(100, token, null!, "https://google.com").Result);
+            Assert.AreEqual<int>(0, Assignment7.DownloadTextRepeatedlyAsync(100, new ParallelOptions(), null!, "https://google.com").Result);
         }
 
         [TestMethod]
         public void DownloadTextRepeatedlyAsync_Cancel_GetsCancelled()
         {
+            ParallelOptions parallelOptions = new();
             CancellationTokenSource source = new();
-            CancellationToken token = source.Token;
-            int res = Assignment7.DownloadTextRepeatedlyAsync(100, token, new Progress<double>(bar => CancelTask(.1, bar, source)), "https://google.com").Result;
-            Assert.IsTrue(100 < res && res < 10000000);
-        }
+            parallelOptions.CancellationToken = source.Token;
+            bool wasCancelled = false;
+            Task task = Task.Run(() =>
+            {
+                source.Cancel();
+            });
+            try
+            {
+                int res = Assignment7.DownloadTextRepeatedlyAsync(100, parallelOptions, new Progress<double>(bar => Console.WriteLine($"Progress: {bar * 100 }%")), "https://google.com").Result;
+            }
+            catch(AggregateException aggregateException)
+            {
+                aggregateException.Handle(exception =>
+                {
+                    if (exception is OperationCanceledException)
+                        wasCancelled = true;
+                    return true;
+                });
+            }
+            Assert.IsTrue(wasCancelled);
 
-        private void CancelTask(double progress, double bar, CancellationTokenSource source)
-        {
-            if (bar > progress) source.Cancel();
         }
     }
 }

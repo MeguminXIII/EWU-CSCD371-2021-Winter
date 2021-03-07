@@ -24,21 +24,27 @@ namespace Assignment7
             });
         }
 
-        public static async Task<int> DownloadTextRepeatedlyAsync(int repititions, CancellationToken cancellationToken, IProgress<double> progressPercent,  params string[] urls)
+        public static async Task<int> DownloadTextRepeatedlyAsync(int repititions, ParallelOptions parallelOptions, IProgress<double> progressPercent,  params string[] urls)
         {
 
             if (repititions < 0) throw new AggregateException(nameof(repititions));
             if (progressPercent is null) throw new AggregateException(nameof(progressPercent));
-            int counter = 0;
-            int res = 0;
-            for(int i = 0; i<repititions && !cancellationToken.IsCancellationRequested; i++)
-            {
-                res += await DownloadTextAsync(urls);
-                if (progressPercent is not null)
-                    progressPercent.Report(counter++/repititions);
-            }
-            return res;
-            
+
+            Task<int> intTask = Task.Run(() =>
+           {
+               int res = 0;
+
+               Parallel.For(0, repititions, parallelOptions, index =>
+               {
+                   parallelOptions.CancellationToken.ThrowIfCancellationRequested();
+                   Interlocked.Add(ref res, DownloadTextAsync(urls).Result);
+
+                   progressPercent.Report(((double)index + 1) / repititions);
+               });
+               return res;
+
+           });
+            return await intTask;
         }
     }
 }

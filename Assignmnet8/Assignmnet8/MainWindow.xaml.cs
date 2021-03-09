@@ -77,10 +77,7 @@ namespace Assignmnet8
             }
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) => Close();
 
         private void SaveToFile_Click(object sender, RoutedEventArgs e)
         {
@@ -112,9 +109,7 @@ namespace Assignmnet8
 
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            SaveBox.Items.Clear();
-        }
+        private void DeleteButton_Click(object sender, RoutedEventArgs e) => SaveBox.Items.Clear();
+        
     }
 }

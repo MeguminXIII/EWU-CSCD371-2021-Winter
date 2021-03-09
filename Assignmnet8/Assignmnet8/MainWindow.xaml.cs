@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+
 
 namespace Assignmnet8
 {
@@ -85,6 +79,36 @@ namespace Assignmnet8
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void SaveToFile_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+               foreach(var i in SaveBox.Items)
+                {
+                    sb.AppendLine(i.ToString());
+                }
+            }
+                File.WriteAllText(saveFileDialog.FileName, sb.ToString());
+        }
+
+        private void LoadFromFile_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = "";
+            OpenFileDialog loadFile = new();
+            if(loadFile.ShowDialog() == true)
+            {
+                fileName = loadFile.FileName;
+                var txtLines = File.ReadAllLines(fileName);
+                foreach (string s in txtLines)
+                    SaveBox.Items.Add(s);
+            }
+           
+           
+
         }
     }
 }

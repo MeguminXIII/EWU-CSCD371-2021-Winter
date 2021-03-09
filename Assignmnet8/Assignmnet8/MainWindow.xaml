@@ -16,7 +16,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="100*" />
-            <ColumnDefinition Width="130*" />
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="100*" />
             <ColumnDefinition Width="15*" />
         </Grid.ColumnDefinitions>
@@ -25,9 +27,9 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="30*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         
         <Button 
@@ -41,20 +43,30 @@
         <TextBlock 
             x:Name="TimerBlock"
             Text="00:00:00" 
-            Grid.Column="2"
+            Grid.Column="3"
             Grid.Row="1"
             FontSize="45"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             TextWrapping="Wrap"
             />
+        
         <Button 
             x:Name="SaveButton" 
-            Content="SaveToList" 
+            Content="Save To List" 
             Grid.Column="1"
             Grid.Row="4"
             Click="SaveButton_Click"
             />
+
+        <Button 
+            x:Name="DeleteButton" 
+            Content="Delete All In List" 
+            Grid.Column="3"
+            Grid.Row="4"
+            Click="DeleteButton_Click"
+            />
+        
         <ListBox 
             x:Name="SaveBox" 
             KeyDown="SaveBox_KeyDown"
@@ -62,10 +74,11 @@
             Grid.Row="3"
             Grid.ColumnSpan="3"
            />
+        
         <TextBox 
             x:Name="DetailsBlock"
             Text=""
-            Grid.Column="2"
+            Grid.Column="3"
             Grid.Row="2"
             TextWrapping="Wrap"
             AcceptsReturn="True"
@@ -75,14 +88,14 @@
         <Button 
             x:Name="CloseButton" 
             Content="Close" 
-            Grid.Column="3"
+            Grid.Column="5"
             Grid.Row="6"
             Click="CloseButton_Click"
             />
 
         <Button 
             x:Name="SaveToFile"  
-            Content="SaveToFile" 
+            Content="Save To File" 
             Click="SaveToFile_Click"
             Grid.Column="1"
             Grid.Row="6"
@@ -90,9 +103,9 @@
 
         <Button 
             x:Name="LoadFromFile"  
-            Content="LoadFromFile" 
+            Content="Load From File" 
             Click="LoadFromFile_Click"
-            Grid.Column="2"
+            Grid.Column="3"
             Grid.Row="6"
             />
 

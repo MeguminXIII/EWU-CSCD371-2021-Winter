@@ -20,6 +20,7 @@ namespace Assignmnet8
         private int Loop = 1;
         private string _Details;
         private bool _StartStop = true;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace Assignmnet8
                 _StartStop = true;
                 StartButton.Content = "Start";
                 DetailsBlock.Text = "Loop " + Loop + " " + TimerBlock.Text;
-                SaveBox.Items.Add($"{_Details}\tEnd of a Run");
+                SaveBox.Items.Add($"{_Details}\t\tEnd of a Run");
             }
         }
 
@@ -109,6 +110,11 @@ namespace Assignmnet8
            
            
 
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveBox.Items.Clear();
         }
     }
 }

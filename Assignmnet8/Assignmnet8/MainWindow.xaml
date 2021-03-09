@@ -1,0 +1,83 @@
+﻿<Window x:Class="Assignmnet8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignmnet8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="130*" />
+            <ColumnDefinition Width="100*" />
+            <ColumnDefinition Width="15*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        
+        <Button 
+            x:Name="StartButton"
+            Content="Start"
+            Grid.Column="1"
+            Grid.Row="1"
+            BorderThickness="2"
+            Background="Gainsboro"
+            Click="StartButton_Click"/>
+        
+        <TextBlock 
+            x:Name="TimerBlock"
+            Text="00:00:00" 
+            Grid.Column="2"
+            Grid.Row="1"
+            FontSize="45"
+            FontWeight="ExtraBold"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+            TextWrapping="Wrap"
+            />
+        <Button 
+            x:Name="SaveButton" 
+            Content="Save" 
+            Grid.Column="1"
+            Grid.Row="6"
+            FontWeight="Bold"
+            Click="SaveButton_Click"
+            />
+        <ListBox 
+            x:Name="SaveBox" 
+            KeyDown="SaveBox_KeyDown"
+            Grid.Column="1"
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            Background="Gainsboro"
+           />
+        <TextBox 
+            x:Name="DetailsBlock"
+            Text=""
+            Grid.Column="2"
+            Grid.Row="2"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            TextChanged="DetailsBlock_TextChanged"
+            Background="Gainsboro"
+            />
+
+        <Button 
+            x:Name="CloseButton" 
+            Content="Close" 
+            Grid.Column="3"
+            Grid.Row="6"
+            FontWeight="Bold"
+            Click="CloseButton_Click"
+            />
+
+    </Grid>
+</Window>

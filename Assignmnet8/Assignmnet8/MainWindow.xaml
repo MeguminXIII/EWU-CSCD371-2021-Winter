@@ -5,6 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignmnet8"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="ExtraBold"
+        TextElement.FontSize="16"
+        FontFamily="{materialDesign:MaterialDesignFont}"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,7 +35,6 @@
             Grid.Column="1"
             Grid.Row="1"
             BorderThickness="2"
-            Background="Gainsboro"
             Click="StartButton_Click"/>
         
         <TextBlock 
@@ -38,7 +43,6 @@
             Grid.Column="2"
             Grid.Row="1"
             FontSize="45"
-            FontWeight="ExtraBold"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             TextWrapping="Wrap"
@@ -48,7 +52,6 @@
             Content="Save" 
             Grid.Column="1"
             Grid.Row="6"
-            FontWeight="Bold"
             Click="SaveButton_Click"
             />
         <ListBox 
@@ -57,7 +60,6 @@
             Grid.Column="1"
             Grid.Row="3"
             Grid.ColumnSpan="3"
-            Background="Gainsboro"
            />
         <TextBox 
             x:Name="DetailsBlock"
@@ -67,7 +69,6 @@
             TextWrapping="Wrap"
             AcceptsReturn="True"
             TextChanged="DetailsBlock_TextChanged"
-            Background="Gainsboro"
             />
 
         <Button 
@@ -75,7 +76,6 @@
             Content="Close" 
             Grid.Column="3"
             Grid.Row="6"
-            FontWeight="Bold"
             Click="CloseButton_Click"
             />
 

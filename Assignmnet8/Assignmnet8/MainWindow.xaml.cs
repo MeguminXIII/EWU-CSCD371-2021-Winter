@@ -47,14 +47,12 @@ namespace Assignmnet8
                 StartButton.Content = "Stop";
                 _TimeAtStart = DateTime.Now;
                 _DispatcherTimer.Start();
-                Background = new SolidColorBrush(Colors.Fuchsia);
             }
             else
             {
                 _DispatcherTimer.Stop();
                 _StartStop = true;
                 StartButton.Content = "Start";
-                Background = new SolidColorBrush(Colors.Orange);
                 DetailsBlock.Text = "Loop " + Loop + " " + TimerBlock.Text;
                 SaveBox.Items.Add($"{_Details}\tEnd of a Run");
             }

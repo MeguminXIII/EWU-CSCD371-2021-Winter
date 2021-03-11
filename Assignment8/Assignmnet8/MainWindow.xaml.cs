@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -71,9 +72,10 @@ namespace Assignmnet8
 
         private void SaveBox_KeyDown(object sender, KeyEventArgs e)
         {
+            e.Handled = true;
             if(e.Key == Key.Delete)
             {
-                SaveBox.Items.Remove(SaveBox.SelectedItem);
+                SaveBox.Items.Remove(SaveBox.Items.OfType<object>().Last());
             }
         }
 
@@ -104,12 +106,6 @@ namespace Assignmnet8
                 foreach (string s in txtLines)
                     SaveBox.Items.Add(s);
             }
-           
-           
-
         }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e) => SaveBox.Items.Clear();
-        
     }
 }

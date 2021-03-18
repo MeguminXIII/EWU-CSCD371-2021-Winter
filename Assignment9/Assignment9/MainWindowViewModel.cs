@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace Assignment9
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public RelayCommand NewContactCmd { get; }
         public RelayCommand DeleteContactCmd { get; }
@@ -27,10 +28,10 @@ namespace Assignment9
             return false;
         }
 
-        private ContactViewModel _CurrentContact;
+        private ContactViewModel? _CurrentContact;
         public ContactViewModel CurrentContact
         {
-            get => _CurrentContact;
+            get => _CurrentContact!;
             set => SetProperty(ref _CurrentContact, value);
         }
 
@@ -58,6 +59,7 @@ namespace Assignment9
                 LastModifiedTime = DateTime.Now
             });
 
+            CurrentContact = ContactList.First();
         }
 
         private void EditContact()
@@ -67,16 +69,29 @@ namespace Assignment9
 
         private void SaveContact()
         {
-            InEdit = false;
-            CurrentContact.LastModifiedTime = DateTime.Now;
+            if (CanEdit()) 
+            {
+                InEdit = false;
+                CurrentContact.LastModifiedTime = DateTime.Now;
+            }
+            else
+            {
+                CreateNewContact();
+            }
+
         }
 
         private void DeleteContact()
         {
-            ContactList.Remove(CurrentContact);
+
+                ContactList.Remove(CurrentContact);
+            if (CanEdit())
+            {
+                CurrentContact = ContactList.First();
+            }
         }
 
-        public bool CanDelete()
+        public bool CanEdit()
         {
             if (ContactList.Count > 0)
                 return true;

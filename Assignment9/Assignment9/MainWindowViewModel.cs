@@ -66,7 +66,7 @@ namespace Assignment9
 
         private void EditContact()
         {
-            InEdit = true;
+            InEdit = CanEdit();
         }
 
         private void SaveContact()
@@ -86,7 +86,7 @@ namespace Assignment9
         private void DeleteContact()
         {
 
-                ContactList.Remove(CurrentContact);
+            ContactList.Remove(CurrentContact);
             if (CanEdit())
             {
                 CurrentContact = ContactList.First();

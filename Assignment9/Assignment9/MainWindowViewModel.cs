@@ -71,7 +71,7 @@ namespace Assignment9
 
         private void SaveContact()
         {
-            if (CanEdit()) 
+            if (CanEdit() && InEdit) 
             {
                 InEdit = false;
                 CurrentContact.LastModifiedTime = DateTime.Now;

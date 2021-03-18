@@ -30,59 +30,108 @@
                            FontSize="20" 
                            Visibility="{Binding FirstName, Converter={StaticResource EmptyStringVisibilityConverter}}"
                            />
-                
+
                 <TextBlock Text="{Binding FirstName}" 
-                           FontSize="15" 
-                           Visibility="{Binding FirstName, Converter={StaticResource EmptyStringVisibilityConverter}}"
-                           />
+                           FontSize="15" >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
                 
                 <TextBlock Text="Last_Name" 
                            FontWeight="ExtraBold" 
                            FontSize="20" 
                            Visibility="{Binding LastName, Converter={StaticResource EmptyStringVisibilityConverter}}"
                            />
-                
+
                 <TextBlock Text="{Binding LastName}" 
-                           FontSize="15" 
-                           Visibility="{Binding LastName, Converter={StaticResource EmptyStringVisibilityConverter}}"
-                           />
+                           FontSize="15">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
                 
                 <TextBlock Text="Phone_Number" 
                            FontWeight="ExtraBold" 
                            FontSize="20" Visibility="{Binding PhoneNumber, Converter={StaticResource EmptyStringVisibilityConverter}}"
                            />
-                
+
                 <TextBlock Text="{Binding PhoneNumber}" 
-                           FontSize="15" 
-                           Visibility="{Binding PhoneNumber, Converter={StaticResource EmptyStringVisibilityConverter}}"
-                           />
+                           FontSize="15" >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
                 
                 <TextBlock Text="Email_Address" 
                            FontWeight="ExtraBold" 
                            FontSize="20"
                            Visibility="{Binding EmailAddress, Converter={StaticResource EmptyStringVisibilityConverter}}"
                            />
-                
+
                 <TextBlock Text="{Binding EmailAddress}" 
-                           FontSize="15" 
-                           Visibility="{Binding EmailAddress, Converter={StaticResource EmptyStringVisibilityConverter}}"
-                           />
+                           FontSize="15" >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
                 
                 <TextBlock Text="Twitter_Name" 
                            FontWeight="ExtraBold" 
                            FontSize="20" Visibility="{Binding TwitterName, Converter={StaticResource EmptyStringVisibilityConverter}}"
                            />
-                
+
                 <TextBlock Text="{Binding TwitterName}" 
-                           FontSize="15" 
-                           Visibility="{Binding TwitterName, Converter={StaticResource EmptyStringVisibilityConverter}}"
-                           />
-                
+                           FontSize="15" >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
                 <TextBlock Text="{Binding LastModifiedTime}" 
                            FontSize="15" 
-                           Visibility="{Binding FirstName, Converter={StaticResource EmptyStringVisibilityConverter}}"
                            VerticalAlignment="Bottom"
-                           HorizontalAlignment="Right"/>
+                           HorizontalAlignment="Right">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </StackPanel>            
         </DataTemplate>
 

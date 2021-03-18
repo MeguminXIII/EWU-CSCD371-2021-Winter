@@ -15,6 +15,7 @@ namespace Assignment9
         public RelayCommand DeleteContactCmd { get; }
         public RelayCommand SaveContactCmd { get; }
         public RelayCommand EditContactCmd { get; }
+
         public ObservableCollection<ContactViewModel> ContactList { get; } = new();
 
         private bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = "")
@@ -62,6 +63,7 @@ namespace Assignment9
             CurrentContact = ContactList.First();
         }
 
+
         private void EditContact()
         {
             InEdit = true;
@@ -100,7 +102,12 @@ namespace Assignment9
 
         private void CreateNewContact()
         {
-            ContactViewModel newContact = new ContactViewModel() { FirstName = "TO", LastName = "DO", LastModifiedTime = DateTime.Now };
+            ContactViewModel newContact = new ContactViewModel() 
+            {
+                FirstName = "TO", 
+                LastName = "DO", 
+                LastModifiedTime = DateTime.Now 
+            };
             ContactList.Add(newContact);
             CurrentContact = newContact;
             InEdit = true;

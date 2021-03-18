@@ -24,6 +24,9 @@ namespace Assignment9
         {
             DataContext = new MainWindowViewModel();
             InitializeComponent();
+
+
+
         }
     }
 }

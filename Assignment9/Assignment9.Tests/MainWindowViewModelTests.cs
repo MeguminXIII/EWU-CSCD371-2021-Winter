@@ -46,5 +46,15 @@ namespace Assignment9.Tests
             mvvm.SaveContactCmd.Execute(null);
             Assert.IsFalse(mvvm.InEdit);
         }
+
+        [TestMethod]
+        public void SaveContact_NoContacts_NewContactIsGeneratedAndInEditForm()
+        {
+            MainWindowViewModel mvvm = new();
+            mvvm.ContactList.Clear();
+            Assert.AreEqual<int>(0, mvvm.ContactList.Count);
+            mvvm.SaveContactCmd.Execute(null);
+            Assert.AreEqual<int>(1, mvvm.ContactList.Count);
+        }
     }
 }

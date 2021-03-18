@@ -9,11 +9,11 @@ namespace Assignment9
         private Func<bool> CanExecuteDelegate { get; }
 
         public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged;
 
-        public bool CanExecute(object _) => CanExecuteDelegate.Invoke();
+        public bool CanExecute(object? _) => CanExecuteDelegate.Invoke();
 
-        public void Execute(object _) => ExecuteDelegate.Invoke();
+        public void Execute(object? _) => ExecuteDelegate.Invoke();
 
         public RelayCommand(Action executeDelegate, Func<bool> canExecuteDelegate)
         {

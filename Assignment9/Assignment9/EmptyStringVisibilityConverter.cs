@@ -9,18 +9,18 @@ using System.Windows.Data;
 
 namespace Assignment9
 {
-    class EmptyStringVisibilityConverter : IValueConverter
+    public class EmptyStringVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (string.IsNullOrEmpty((string)value))
+            if (string.IsNullOrWhiteSpace((string)value))
                 return Visibility.Collapsed;
             return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (string.IsNullOrEmpty((string)value))
+            if (string.IsNullOrWhiteSpace((string)value))
                 return Visibility.Collapsed;
             return Visibility.Visible;
         }
